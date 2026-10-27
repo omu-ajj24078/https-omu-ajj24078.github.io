@@ -3,25 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phase 0-3: webページに動きを付ける</title>
-</head>
-<body>
-    <h1>Webシステム構築基礎 第3回課題</h1>
-    <h1>大浦小春(AJJ24078)</h1>
-    <div>
-        <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>初めてのJavaScript</title>
+    <title>動く時計</title>
     <script>
-        alert('JavaScript が動作しています！');
+        function updateClock() {
+            // 現在時刻を取得
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            
+            // 1桁の場合は0を付ける
+            if (hours < 10) hours = '0' + hours;
+            if (minutes < 10) minutes = '0' + minutes;
+            if (seconds < 10) seconds = '0' + seconds;
+            
+            // 時刻を表示
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('clock').innerHTML = timeString;
+        }
+        
+        // 1秒ごとにupdateClock関数を実行
+        setInterval(updateClock, 1000);
+        
+        // ページ読み込み時に即座に表示
+        window.onload = updateClock;
     </script>
 </head>
 <body>
-    <h1>JavaScriptのテスト</h1>
-</body>
-</html>
+    <h1>現在時刻</h1>
+    <div id="clock" style="font-size: 48px; font-weight: bold; color: blue;">
+        00:00:00
+
+    <h1>大浦小春(AJJ24078)</h1>
+    <div>
         <h3>自己紹介</h3>
         <p>大浦小春と申します。<p>
         <p>前にgithubをAIの指示に従い使ってみたことはあるので、今回の講義で詳しくなれるととても楽しみにしております。<p>
